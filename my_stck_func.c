@@ -2,9 +2,9 @@
 
 
 /**
- * add_to_stack -Func to add to stck
- * @new_node: newest nod
- * @line: line reps
+ * add_to_stack - Function for stack addition
+ * @new_node: next upcoming node
+ * @line: ln parameter
  */
 void add_to_stack(stack_t **new_node, __attribute__((unused))unsigned int line)
 {
@@ -25,9 +25,9 @@ void add_to_stack(stack_t **new_node, __attribute__((unused))unsigned int line)
 
 
 /**
- * print_stack - New node added to stack
- * @stack: Stack pontaer.
- * @ln_number: line parametr
+ * print_stack - prints stack queue
+ * @stack: Queue stack
+ * @ln_number: line element
  */
 void print_stack(stack_t **stack, unsigned int ln_number)
 {
@@ -45,9 +45,9 @@ void print_stack(stack_t **stack, unsigned int ln_number)
 }
 
 /**
- * pop_top - New node added.
- * @stack: points to stack.
- * @ln_number: LN parmeter
+ * pop_top - Newest element.
+ * @stack: stack queue
+ * @ln_number:line element
  */
 void pop_top(stack_t **stack, unsigned int ln_number)
 {
@@ -64,9 +64,9 @@ void pop_top(stack_t **stack, unsigned int ln_number)
 }
 
 /**
- * print_top - topmost stack printed
- * @stack: topmos stck
- * @line_number:vNum parameter
+ * print_top - start with the last element in
+ * @stack: stack queue
+ * @ln_number: line element
  */
 void print_top(stack_t **stack, unsigned int ln_number)
 {

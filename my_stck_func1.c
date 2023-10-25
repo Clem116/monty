@@ -1,9 +1,9 @@
 #include "monty.h"
 
 /**
- * nop -This does nothing.
- * @stack: The pointer to a pointer pointing to top node of the stack.
- * @line_number: Interger representing the line number of of the opcode.
+ * nop -There is nothing.
+ * @stack: The Stack Queue .
+ * @line_number: line element.
  */
 void nop(stack_t **stack, unsigned int line_number)
 {
@@ -13,9 +13,9 @@ void nop(stack_t **stack, unsigned int line_number)
 
 
 /**
- * swap_nodes -This Swaps the top two elements of the stack.
- * @stack: The pointer to a pointer pointing to top node of the stack.
- * @line_number: Interger representing the line number of of the opcode.
+ * swap_nodes - Swaps topmost 2 elements of the stack.
+ * @stack: Stack Queue 
+ * @line_number: line element
  */
 void swap_nodes(stack_t **stack, unsigned int line_number)
 {
@@ -34,9 +34,9 @@ void swap_nodes(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * add_nodes - This adds the top two elements of the stack.
- * @stack: The pointer to a pointer pointing to top node of the stack.
- * @line_number: Interger representing the line number of of the opcode.
+ * add_nodes - new additions of element
+ * @stack: Stack Queue 
+ * @line_number: line element
  */
 void add_nodes(stack_t **stack, unsigned int line_number)
 {
@@ -54,9 +54,9 @@ void add_nodes(stack_t **stack, unsigned int line_number)
 
 
 /**
- * sub_nodes - This adds the top two elements of the stack.
- * @stack: The pointer to a pointer pointing to top node of the stack.
- * @line_number: Interger representing the line number of of the opcode.
+ * sub_nodes - 2 elements additions
+ * @stack: Stack Queue 
+ * @line_number:ln element
  */
 void sub_nodes(stack_t **stack, unsigned int line_number)
 {
@@ -76,16 +76,16 @@ void sub_nodes(stack_t **stack, unsigned int line_number)
 
 
 /**
- * div_nodes - This adds the top two elements of the stack.
- * @stack: The pointer to a pointer pointing to top node of the stack.
- * @ln_number: The interger representing the line number of of the opcode.
+ * div_nodes - additions of 2 elements in queue.
+ * @stack: Stack Queue 
+ * line_number: line elemet.
  */
-void div_nodes(stack_t **stack, unsigned int ln_number)
+void div_nodes(stack_t **stack, unsigned int line_number)
 {
 	int sum;
 
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-		more_err(8, ln_number, "div");
+		more_err(8, line_number, "div");
 
 	if ((*stack)->n == 0)
 		more_err(9, line_number);

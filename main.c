@@ -1,11 +1,11 @@
 #include "monty.h"
-/*stack_t *head = NULL;*/
+stack_t *head = NULL;
 
 /**
- * main - Program Entry Point
- * @argv: Parameter count argument
- * @argc: Count parameter argument
- * Return: Success (0)
+ * main - Program Entry-point
+ * @argv: arguments PARAMETER
+ * @argc: args parameter
+ * Return: alwaysSuccess (0)
  */
 
 int main(int argc, char *argv[])
@@ -21,11 +21,11 @@ int main(int argc, char *argv[])
 }
 
 /**
- * create_node - Creates a new-node
- * @d: Parameter
- * Return: Success (1), Otherwise (NULL.)
+ * create_node - Function for create node
+ * @n: element variable
+ * Return:Return Sucess (1), Otherwise (0).
  */
-stack_t *create_node(int d)
+stack_t *create_node(int n)
 {
 	stack_t *node;
 
@@ -34,12 +34,12 @@ stack_t *create_node(int d)
 		err(4);
 	node->next = NULL;
 	node->prev = NULL;
-	node->d = d;
+	node->n = n;
 	return (node);
 }
 
 /**
- * free_nodes - Pops nodes
+ * free_nodes - Releases this nodes in the stack.
  */
 void free_nodes(void)
 {
@@ -58,11 +58,11 @@ void free_nodes(void)
 
 
 /**
-* add_to_queue -pushes new node to the queue
-* @new_node: next node
-* @line: new line code
-*/
-void add_to_queue(stack_t **new_node, __attribute__((unused))unsigned int line)
+ * add_to_queue - Adds a new node to queue
+ * @new_node: Next node
+ * @ln: line parameter in opcode.
+ */
+void add_to_queue(stack_t **new_node, __attribute__((unused))unsigned int ln)
 {
 	stack_t *tmp;
 
@@ -80,3 +80,4 @@ void add_to_queue(stack_t **new_node, __attribute__((unused))unsigned int line)
 	tmp->next = *new_node;
 	(*new_node)->prev = tmp;
 
+}

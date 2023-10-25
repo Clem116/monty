@@ -10,35 +10,37 @@
 #include <stdarg.h>
 
 /**
- * struct instruction_s - Function for instruction structure
- * @opcode: Codes
- * @a: function to handle the opcode
- * Description: opcode and its function
+ * struct stack_s - Stack function for queue
+ * @n: parameter
+ * @next: New pointer in stack
+ * @prev: Last element in stack
+ *
+ * Description: Linked list structre for
+ *stack, queues, LIFO, FIFO
+ */
+typedef struct stack_s
+{
+        int n;
+        struct stack_s *prev;
+        struct stack_s *next;
+} stack_t;
+
+/**
+ * struct instruction_s - Function STRUCT for instruction
+ * @opcode: instruction
+ * @f:parameter
+ *
+ * Description: Function FOR THE OPCODE
  * for stack, queues, LIFO, FIFO
  */
 typedef struct instruction_s
 {
-	char *opcode;
-	void (*a)(stack_t **stack, unsigned int line_number);
+        char *opcode;
+        void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
 extern stack_t *head;
 typedef void (*op_func)(stack_t **, unsigned int);
-
-/**
- * struct stack_s - Stack structure
- * @i:parameter
- * @prev: Last element in queue
- * @next: New element in queue
- * Description: doubly linked list node structure
- * for stack, queues, LIFO, FIFO
- */
-typedef struct stack_s
-{
-	int i;
-	struct stack_s *prev;
-	struct stack_s *next;
-} stack_t;
 
 /*file operations*/
 void open_file(char *file_name);
@@ -47,20 +49,12 @@ void read_file(FILE *);
 int len_chars(FILE *);
 void find_func(char *, char *, int, int);
 
-/*Stack operations*/
+/*Stck opArations*/
 stack_t *create_node(int n);
 void free_nodes(void);
 void print_stack(stack_t **, unsigned int);
 void add_to_stack(stack_t **, unsigned int);
 void add_to_queue(stack_t **, unsigned int);
-
-
-/*Math operations with nodes*/
-void add_nodes(stack_t **, unsigned int);
-void sub_nodes(stack_t **, unsigned int);
-void div_nodes(stack_t **, unsigned int);
-void mul_nodes(stack_t **, unsigned int);
-void mod_nodes(stack_t **, unsigned int);
 
 void call_fun(op_func, char *, char *, int, int);
 
@@ -69,12 +63,19 @@ void pop_top(stack_t **, unsigned int);
 void nop(stack_t **, unsigned int);
 void swap_nodes(stack_t **, unsigned int);
 
-/*String operations*/
+/*Meth oparations with nodes*/
+void add_nodes(stack_t **, unsigned int);
+void sub_nodes(stack_t **, unsigned int);
+void div_nodes(stack_t **, unsigned int);
+void mul_nodes(stack_t **, unsigned int);
+void mod_nodes(stack_t **, unsigned int);
+
+/*Strng oparations*/
 void print_char(stack_t **, unsigned int);
 void print_str(stack_t **, unsigned int);
 void rotl(stack_t **, unsigned int);
 
-/*Error hanlding*/
+/*Errr hnlding*/
 void err(int error_code, ...);
 void more_err(int error_code, ...);
 void string_err(int error_code, ...);

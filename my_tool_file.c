@@ -1,8 +1,8 @@
 #include "monty.h"
 
 /**
- * open_file - Opn file func
- * @file_name: name of path
+ * open_file - Function for opening a file
+ * @file_name: Name path
  * Return: (void)
  */
 
@@ -19,8 +19,8 @@ void open_file(char *file_name)
 
 
 /**
- * read_file - Func read file
- * @fd: discr of fle
+ * read_file - Function for reading a file
+ * @fd: discriptor
  * Return: (void)
  */
 
@@ -39,11 +39,11 @@ void read_file(FILE *fd)
 
 
 /**
- * parse_line - Ln Separator
+ * parse_line - Line Separator
  * which function to call
- * @buffer: Buffer ln
- * @line_number: ln parameter
- * @format:  storage parameter 
+ * @buffer: Buffer
+ * @line_number: line element
+ * @format:  storage format.
  * if 1 nodes will be entered as a queue.
  * Return:This Returns 0 if the opcode is stack. 1 if queue.
  */
@@ -71,18 +71,18 @@ int parse_line(char *buffer, int line_number, int format)
 }
 
 /**
- * find_func - Function find
- * @opcode: opecode function
- * @value: Opcde args
- * @format: fmt parameter
- * @line: Ln member
+ * find_func - The Find Function.
+ * @opcode: eLEMENT
+ * @value: Value arg.
+ * @format: fmt storage.
+ * @ln: line parameter
  * if 1 nodes will be entered as a queue.
  * Return: void
  */
-void find_func(char *opcode, char *value, int line, int format)
+void find_func(char *opcode, char *value, int ln, int format)
 {
-	int n;
-	int flg;
+	int i;
+	int flag;
 
 	instruction_t func_list[] = {
 		{"push", add_to_stack},
@@ -106,54 +106,55 @@ void find_func(char *opcode, char *value, int line, int format)
 	if (opcode[0] == '#')
 		return;
 
-	for (flg = 1, n = 0; func_list[n].opcode != NULL; n++)
+	for (flag = 1, i = 0; func_list[i].opcode != NULL; i++)
 	{
-		if (strcmp(opcode, func_list[n].opcode) == 0)
+		if (strcmp(opcode, func_list[i].opcode) == 0)
 		{
-			call_fun(func_list[n].f, opcode, value, line, format);
-			flg = 0;
+			call_fun(func_list[i].f, opcode, value, ln, format);
+			flag = 0;
 		}
 	}
-	if (flg == 1)
-		err(3, line, opcode);
+	if (flag == 1)
+		err(3, ln, opcode);
 }
 
 
 /**
- * call_fun - Function Call.
- * @func: Function pointer.
- * @ope: Opecode reps.
- * @val: str rep of a number vlue.
- * @line: Ln number for the instruction.
- * @format: Format spacifiar. 
+ * call_fun - Call Function.
+ * @func: NEXT to be called.
+ * @op: Str rep. the opcode.
+ * @val: str rep numeric value.
+ * @ln: line element.
+ * @format: Fmt element.
+ * if 1 nodes will be entered as a queue.
  */
-void call_fun(op_func func, char *ope, char *val, int line, int format)
+void call_fun(op_func func, char *op, char *val, int ln, int format)
 {
 	stack_t *node;
-	int flg;
-	int n;
+	int flag;
+	int i;
 
-	flg = 1;
-	if (strcmp(ope, "push") == 0)
+	flag = 1;
+	if (strcmp(op, "push") == 0)
 	{
 		if (val != NULL && val[0] == '-')
 		{
 			val = val + 1;
-			flg = -1;
+			flag = -1;
 		}
 		if (val == NULL)
-			err(5, line);
-		for (n = 0; val[n] != '\0'; n++)
+			err(5, ln);
+		for (i = 0; val[i] != '\0'; i++)
 		{
-			if (isdigit(val[n]) == 0)
-				err(5, line);
+			if (isdigit(val[i]) == 0)
+				err(5, ln);
 		}
-		node = create_node(atoi(val) * flg);
+		node = create_node(atoi(val) * flag);
 		if (format == 0)
-			func(&node, line);
+			func(&node, ln);
 		if (format == 1)
-			add_to_queue(&node, line);
+			add_to_queue(&node, ln);
 	}
 	else
-		func(&head, line);
+		func(&head, ln);
 }
